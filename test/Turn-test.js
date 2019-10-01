@@ -32,7 +32,6 @@ describe('Turn', () => {
     });
     
     it('should return a card', () => {
-        console.log(card)
         expect(turn.returnCard()).to.eql(card);
     });
 
