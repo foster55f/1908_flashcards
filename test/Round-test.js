@@ -85,8 +85,6 @@ describe('Round', () => {
         round.takeTurn('array');
         round.returnCurrentCard()
         round.takeTurn('mutator method');
-        console.log(round.turnsCount)
-        console.log(round.calculatePercentCorrect())
         expect(round.calculatePercentCorrect()).to.equal('33');
     });
 
