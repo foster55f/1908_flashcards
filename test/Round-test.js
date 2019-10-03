@@ -44,6 +44,14 @@ describe('Round', () => {
         expect(Round).to.be.a('function');
     });
 
+    it('should have a turn count with a default value of zero', () => {
+        expect(round.turnsCount).to.equal(0)
+    });
+
+    it('should have an incorrect guesses property that is set to an empty array', () => {
+        expect(round.incorrectGuesses).to.eql([])
+    });
+
     it('should return the current card in the deck', () => {
         round.returnCurrentCard()
         expect(round.currentCard).to.equal(card1);
@@ -58,6 +66,8 @@ describe('Round', () => {
     it('should update the turns count when taking a turn', () => {
         round.takeTurn('guess');
         expect(round.turnsCount).to.equal(1);
+        round.takeTurn('guess');
+        expect(round.turnsCount).to.equal(2);
     });
 
     it('should store incorrect guesses in an array by id', () => {
@@ -74,15 +84,10 @@ describe('Round', () => {
         round.returnCurrentCard()
         round.takeTurn('array');
         round.returnCurrentCard()
-        expect(round.calculatePercentCorrect()).to.equal(50);
-    });
-
-    it('should display the percentage user responding correctly', () => {
-        round.takeTurn('guess');
-        round.returnCurrentCard()
-        round.takeTurn('array');
-        round.returnCurrentCard()
-        expect(round.endRound()).to.equal('** Round over! ** You answered 50 % of the questions correctly!');
+        round.takeTurn('mutator method');
+        console.log(round.turnsCount)
+        console.log(round.calculatePercentCorrect())
+        expect(round.calculatePercentCorrect()).to.equal('33');
     });
 
 });
